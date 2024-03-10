@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-person-table-1.0" author="dzmitry.kapachou">
+        <createTable tableName="persons">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="person-id_PK"/>
+            </column>
+            <column name="username" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="firstname" type="VARCHAR(255)"/>
+            <column name="lastname" type="VARCHAR(255)"/>
+            <column name="interests" type="VARCHAR(2255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(15)"/>
+            <column name="age" type="BIGINT"/>
+        </createTable>
+
+        <createTable tableName="friends">
+            <column name="owner_id" type="BIGINT"/>
+            <column name="friend_id" type="BIGINT"/>
+        </createTable>
+
+        <createTable tableName="tweets">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="tweet-id_PK"/>
+            </column>
+            <column name="text" type="VARCHAR(5000)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="modified_at" type="timestamp"/>
+            <column name="person_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+<!--        <createTable tableName="dialogues">-->
+<!--            <column name="id" type="BIGINT" autoIncrement="true">-->
+<!--                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="tweet-id_PK"/>-->
+<!--            </column>-->
+<!--            <column name="uuid" type="VARCHAR(50)"/>-->
+<!--            <column name="title" type="VARCHAR(5000)"/>-->
+<!--        </createTable>-->
+
+<!--        <createTable tableName="persons_dialogues">-->
+<!--            <column name="person_id" type="BIGINT"/>-->
+<!--            <column name="dialogue_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+
+<!--        <createTable tableName="messages">-->
+<!--            <column name="id" type="BIGINT" autoIncrement="true">-->
+<!--                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="tweet-id_PK"/>-->
+<!--            </column>-->
+<!--            <column name="text" type="VARCHAR(5000)"/>-->
+<!--            <column name="created_at" type="timestamp"/>-->
+<!--            <column name="modified_at" type="timestamp"/>-->
+<!--            <column name="person_id" type="BIGINT"/>-->
+<!--            <column name="dialogue_id" type="BIGINT"/>-->
+<!--        </createTable>-->
+
+
+        <addForeignKeyConstraint baseTableName="tweets"
+                                 baseColumnNames="person_id"
+                                 constraintName="persons_id_tweets_persons_id_FK"
+                                 referencedTableName="persons"
+                                 referencedColumnNames="id" />
+
+    </changeSet>
+
+    <!--    <changeSet id="optimize-person-table-by-creation-index" author="dzmitry.kapachou">-->
+    <!--        <sql>-->
+    <!--            CREATE EXTENSION IF NOT EXISTS pg_trgm;-->
+    <!--            CREATE EXTENSION IF NOT EXISTS btree_gin;-->
+
+    <!--            CREATE INDEX person_first_name_last_name_index_gin_trgm_idx ON person USING gin (lastname gin_trgm_ops, firstname gin_trgm_ops);-->
+    <!--        </sql>-->
+    <!--    </changeSet>-->
+
+</databaseChangeLog>

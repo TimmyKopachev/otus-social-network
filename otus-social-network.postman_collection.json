@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "dcb1bfe3-e92a-4542-86b7-8628c560c1ea",
+		"name": "otus-social-network",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5027209"
+	},
+	"item": [
+		{
+			"name": "get person by ID  (login)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/users/111",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all persons",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "username-1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create person (register)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "username-3",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"new-username\",\r\n        \"password\": \"my-password\",\r\n        \"firstname\": \"nikolai\",\r\n        \"lastname\": \"kapachou\",\r\n        \"age\": 62,\r\n        \"gender\": \"MALE\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search by first/last names",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "username-1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/users/search?firstname=Алек&lastname=Толкачев",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"users",
+						"search"
+					],
+					"query": [
+						{
+							"key": "firstname",
+							"value": "Алек"
+						},
+						{
+							"key": "lastname",
+							"value": "Толкачев"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
