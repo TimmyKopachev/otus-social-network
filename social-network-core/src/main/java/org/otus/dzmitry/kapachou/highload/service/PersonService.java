@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,12 +19,13 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @AllArgsConstructor
+@Service
 public class PersonService extends AbstractCrudService<Person> implements UserDetailsService {
 
-    final PersonRepository personRepo;
+    final PersonRepository personRepository;
 
     public Collection<Person> searchPersonsByFirstnameAndLastname(String firstname, String lastname) {
-        return personRepo.findByFirstnameAndLastnameOrderByIdAsc(firstname, lastname);
+        return personRepository.findByFirstnameAndLastnameOrderByIdAsc(firstname, lastname);
     }
 
     public Person getCurrentAuthenticatedUser() {
@@ -36,17 +38,26 @@ public class PersonService extends AbstractCrudService<Person> implements UserDe
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new AuthPerson(personRepo.getByUsername(username));
+        return new AuthPerson(personRepository.getByUsername(username));
     }
 
     public List<Person> getPersonsByIds(Collection<Long> ids) {
-        Iterable<Person> persons = personRepo.findAllById(ids);
+        Iterable<Person> persons = personRepository.findAllById(ids);
         return StreamSupport.stream(persons.spliterator(), false)
                 .collect(Collectors.toList());
     }
 
+    public Collection<Person> getActivePersonSessions() {
+        return personRepository.getActivePlayerSession();
+    }
+
+    public Collection<Person> getRecentPersonSessions() {
+        return personRepository.getRecentPersonSessions();
+    }
+
+
     @Override
     protected BaseRepository<Person> getRepository() {
-        return personRepo;
+        return personRepository;
     }
 }

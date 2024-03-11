@@ -18,6 +18,11 @@ public abstract class AbstractCrudService<T extends BasicId> implements CrudServ
     }
 
     @Override
+    public Iterable<T> saveAll(Collection<T> data) {
+        return getRepository().saveAll(data);
+    }
+
+    @Override
     public T update(T t) {
         return getRepository().save(t);
     }
@@ -38,13 +43,12 @@ public abstract class AbstractCrudService<T extends BasicId> implements CrudServ
 
     @Override
     public Collection<T> findAll() {
-
-
         Iterable<T> entities = getRepository().findAll();
         List<T> list = new ArrayList<>();
         entities.forEach(list::add);
         return list;
     }
+
 
     protected abstract BaseRepository<T> getRepository();
 

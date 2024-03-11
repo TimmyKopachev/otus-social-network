@@ -19,6 +19,13 @@
         </sql>
 
         <sql>
+            insert into sessions(id, signed_in_at, signed_out_at, last_activity_at, person_id) values (-14, NOW(), NULL, NOW(), 11100011);
+            insert into sessions(id, signed_in_at, signed_out_at, last_activity_at, person_id) values (-15, NOW(), NULL, NULL, 11200031);
+            insert into sessions(id, signed_in_at, signed_out_at, last_activity_at, person_id) values (-16, NOW(), NULL, NOW(), 11331003);
+            insert into sessions(id, signed_in_at, signed_out_at, last_activity_at, person_id) values (-17, NOW(), NULL, NULL, 19190004);
+        </sql>
+
+        <sql>
             insert into friends(owner_id, friend_id)
             values (11100011, 11200031);
 

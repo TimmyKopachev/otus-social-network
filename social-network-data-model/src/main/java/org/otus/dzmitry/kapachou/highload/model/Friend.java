@@ -34,6 +34,10 @@ public class Friend implements Serializable {
         return String.format("%s %s", friend.getFirstname(), friend.getLastname());
     }
 
+    public Person getFriendAsPerson() {
+        return friend;
+    }
+
     public Friend(Person owner, Person friend) {
         this.owner = owner;
         this.friend = friend;

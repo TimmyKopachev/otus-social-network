@@ -17,12 +17,16 @@
         <testcontainer.version>1.19.6</testcontainer.version>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>otus.dzmitry.kapachou</groupId>
             <artifactId>social-network-data-model</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>32.0.1-jre</version>
         </dependency>
         <!-- auth security -->
         <dependency>
@@ -48,6 +52,17 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <!-- cache hazelcast -->
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>5.3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-spring</artifactId>
+            <version>5.3.6</version>
         </dependency>
         <!-- testing container-->
         <dependency>

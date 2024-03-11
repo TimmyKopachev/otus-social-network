@@ -27,11 +27,12 @@ public class Person extends BasicId implements Serializable {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy="owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Friend> friends = new HashSet<>();
 
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<Tweet> tweets = new HashSet<>();
+
 
 /*    @ManyToMany(mappedBy = "attenders", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private Set<Dialogue> dialogues = new HashSet<>();*/

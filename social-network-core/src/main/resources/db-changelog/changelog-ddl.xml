@@ -35,6 +35,14 @@
             </column>
         </createTable>
 
+        <createTable tableName="sessions">
+            <column name="id" type="BIGINT"/>
+            <column name="signed_in_at" type="timestamp"/>
+            <column name="signed_out_at" type="timestamp"/>
+            <column name="last_activity_at" type="timestamp"/>
+            <column name="person_id" type="BIGINT"/>
+        </createTable>
+
 <!--        <createTable tableName="dialogues">-->
 <!--            <column name="id" type="BIGINT" autoIncrement="true">-->
 <!--                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="tweet-id_PK"/>-->

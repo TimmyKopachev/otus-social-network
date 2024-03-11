@@ -1,10 +1,10 @@
 package org.otus.dzmitry.kapachou.highload.config;
 
-import org.otus.dzmitry.kapachou.highload.service.PersonRepository;
 import org.otus.dzmitry.kapachou.highload.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,16 +17,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonService personService;
 
     @Bean
+    @Primary
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected UserDetailsService userDetailsService() {
-        return new PersonService(personRepository);
+        return this.personService;
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.otus.dzmitry.kapachou.highload.web;
 
 import lombok.AllArgsConstructor;
 import org.otus.dzmitry.kapachou.highload.model.Tweet;
-import org.otus.dzmitry.kapachou.highload.service.TweetService;
+import org.otus.dzmitry.kapachou.highload.service.TweetTimelineFeedService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,26 +13,18 @@ import java.util.Collection;
 @AllArgsConstructor
 public class TweetRestController {
 
-    final TweetService tweetService;
+    final TweetTimelineFeedService feedService;
 
-    @GetMapping("/{id}")
-    public Tweet getTweet(@PathVariable Long id) {
-        return tweetService.get(id);
-    }
 
-    @GetMapping
+    @GetMapping(value = "/feed")
     public Collection<Tweet> getTweets() {
-        return tweetService.findAll();
+        return feedService.fetchTweetsFeed();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Tweet createTweet(@RequestBody Tweet tweet) {
-        return tweetService.save(tweet);
+    public void createTweet(@RequestBody Tweet tweet) {
+        feedService.postTweet(tweet);
     }
 
-    @DeleteMapping
-    public void removeTweet(@PathVariable Long tweetId) {
-        tweetService.delete(tweetId);
-    }
 }

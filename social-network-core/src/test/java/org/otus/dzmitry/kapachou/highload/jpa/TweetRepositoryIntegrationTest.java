@@ -3,15 +3,14 @@ package org.otus.dzmitry.kapachou.highload.jpa;
 import org.junit.Assert;
 import org.junit.Test;
 import org.otus.dzmitry.kapachou.highload.SocialNetworkCoreIntegrationTest;
-import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.otus.dzmitry.kapachou.highload.model.Tweet;
-import org.otus.dzmitry.kapachou.highload.model.auth.AuthPerson;
 import org.otus.dzmitry.kapachou.highload.service.PersonService;
 import org.otus.dzmitry.kapachou.highload.service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TweetRepositoryIntegrationTest extends SocialNetworkCoreIntegrationTest {
@@ -29,8 +28,10 @@ public class TweetRepositoryIntegrationTest extends SocialNetworkCoreIntegration
         var tweets = person.getTweets();
         Assert.assertEquals(0, tweets.size());
 
-        tweetService.save(buildTweet("this is my first tweet"));
-        tweetService.save(buildTweet("this is my second tweet"));
+        tweetService.saveAll(Set.of(
+                buildTweet("this is my first tweet"),
+                buildTweet("this is my second tweet")
+        ));
 
         var current = personService.get(11200031L);
         Assert.assertFalse(current.getTweets().isEmpty());
@@ -38,7 +39,7 @@ public class TweetRepositoryIntegrationTest extends SocialNetworkCoreIntegration
 
         var friend = personService.get(11100011L);
         setupPersonAuthentication(friend);
-        var friendsTweets = tweetService.findAll();
+        var friendsTweets = tweetService.findTweetsIncludingFriendsTweets(person);
         Assert.assertFalse(friend.getTweets().isEmpty());
         Assert.assertEquals(3, friend.getTweets().size());
 

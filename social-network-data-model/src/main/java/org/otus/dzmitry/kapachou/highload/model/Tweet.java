@@ -21,6 +21,10 @@ public class Tweet extends BaseAuditIdEntity {
         return String.format("%s %s", author.getFirstname(), author.getLastname());
     }
 
+    public Person getAuthorAsPerson() {
+        return this.author;
+    }
+
     @Override
     public String toString() {
         return String.format("author: [%s %s] wrote a post: %s %s %s",

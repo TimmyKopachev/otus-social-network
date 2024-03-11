@@ -8,6 +8,8 @@ public interface CrudService <T extends BasicId> {
 
     T save(T t);
 
+    Iterable<T> saveAll(Collection<T> data);
+
     T update(T t);
 
     T get(Long id);
