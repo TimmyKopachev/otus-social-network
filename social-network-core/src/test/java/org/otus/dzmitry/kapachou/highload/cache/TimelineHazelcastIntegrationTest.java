@@ -24,7 +24,6 @@ public class TimelineHazelcastIntegrationTest extends SocialNetworkCoreIntegrati
     private HazelcastInstance hazelcastInstance;
     @Autowired
     private IMap<Long, Collection<Tweet>> tweetsCache;
-
     @Autowired
     private PersonService personService;
     @Autowired

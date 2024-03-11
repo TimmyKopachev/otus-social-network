@@ -14,6 +14,12 @@ public class SessionService {
 
     private final SessionRepository sessionRepository;
 
+    public Session generateSessionFor(Person person) {
+        Session session = new Session();
+        session.setPerson(person);
+        return sessionRepository.save(session);
+    }
+
     public Session getSessionByPersonId(Long personId) {
         return sessionRepository.getSessionByPersonId(personId);
     }
