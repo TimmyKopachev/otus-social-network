@@ -1,5 +1,6 @@
 package org.otus.dzmitry.kapachou.highload.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,6 +35,7 @@ public class Friend implements Serializable {
         return String.format("%s %s", friend.getFirstname(), friend.getLastname());
     }
 
+    @JsonIgnore
     public Person getFriendAsPerson() {
         return friend;
     }

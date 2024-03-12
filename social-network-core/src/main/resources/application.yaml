@@ -28,3 +28,9 @@ spring:
         ddl-auto: none
 
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace
+

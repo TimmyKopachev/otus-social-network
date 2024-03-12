@@ -29,7 +29,7 @@ public class FriendService extends PersonService {
     public void discardFriend(Long friendId) {
         Person current = getCurrentAuthenticatedUser();
         Person friend = get(friendId);
-        // :discarding friends' relationships
+        // discarding friends' relationships
         current.getFriends().remove(new Friend(current, friend));
         friend.getFriends().remove(new Friend(friend, current));
 

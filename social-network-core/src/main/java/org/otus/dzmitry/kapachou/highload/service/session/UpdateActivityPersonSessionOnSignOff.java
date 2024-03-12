@@ -1,4 +1,4 @@
-package org.otus.dzmitry.kapachou.highload.service.auth;
+package org.otus.dzmitry.kapachou.highload.service.session;
 
 import lombok.AllArgsConstructor;
 import org.otus.dzmitry.kapachou.highload.model.Session;

@@ -23,7 +23,7 @@ public interface SessionRepository extends BaseRepository<Session> {
     @Modifying
     @Query(value = """
             UPDATE Session s
-            SET s.signedInAt = current_time
+            SET s.signedInAt = now()
             WHERE s.id = :sessionId
             """)
     void updateSignInAtToCurrentTime(Long sessionId);
@@ -31,7 +31,7 @@ public interface SessionRepository extends BaseRepository<Session> {
     @Modifying
     @Query(value = """
             UPDATE Session s
-            SET s.signedInAt = current_time
+            SET s.signedInAt = now()
             WHERE s.id = :sessionId
             """)
     void updateSignedOutAtToCurrentTime(Long sessionId);
@@ -39,7 +39,7 @@ public interface SessionRepository extends BaseRepository<Session> {
     @Modifying
     @Query(value = """
             UPDATE Session s
-            SET s.signedInAt = current_time
+            SET s.signedInAt = now()
             WHERE s.id = :sessionId
             """)
     void updateLastActivityAtToCurrentTime(Long sessionId);

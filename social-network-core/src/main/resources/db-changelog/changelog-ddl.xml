@@ -37,9 +37,9 @@
 
         <createTable tableName="sessions">
             <column name="id" type="BIGINT"/>
-            <column name="signed_in_at" type="timestamp"/>
-            <column name="signed_out_at" type="timestamp"/>
-            <column name="last_activity_at" type="timestamp"/>
+            <column name="signed_in_at" type="timestamp with timezone"/>
+            <column name="signed_out_at" type="timestamp with timezone"/>
+            <column name="last_activity_at" type="timestamp with timezone"/>
             <column name="person_id" type="BIGINT"/>
         </createTable>
 

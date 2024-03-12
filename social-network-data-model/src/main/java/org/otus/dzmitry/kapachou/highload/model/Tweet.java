@@ -1,5 +1,6 @@
 package org.otus.dzmitry.kapachou.highload.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -21,6 +22,7 @@ public class Tweet extends BaseAuditIdEntity {
         return String.format("%s %s", author.getFirstname(), author.getLastname());
     }
 
+    @JsonIgnore
     public Person getAuthorAsPerson() {
         return this.author;
     }
