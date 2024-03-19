@@ -1,0 +1,13 @@
+spring:
+  #Liquibase
+  liquibase:
+    change-log: ${LIQUIBASE_CHANGE_LOG:classpath:db-changelog/changelog-dev.xml}
+
+  #JPA
+  datasource:
+    url: jdbc:tc:postgresql:15.1:///otus-social-network-db-test
+    username: postgres
+    password: postgres
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+

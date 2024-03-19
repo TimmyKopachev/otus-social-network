@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.5</version>
+        <version>3.2.0</version>
     </parent>
 
     <groupId>otus.dzmitry.kapachou</groupId>
@@ -16,8 +16,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>social-network-core</module>
-        <module>social-network-data-model</module>
+        <module>sn-otus-core</module>
+        <module>sn-data-model</module>
+        <module>sn-socket-notification-sender</module>
+        <module>sn-kstream-kafka-starter</module>
+        <module>sn-blackbox-websocket-testing</module>
     </modules>
 
     <developers>
@@ -41,10 +44,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!-- lombok -->
         <dependency>

@@ -1,0 +1,17 @@
+server:
+  port: 9082
+
+spring:
+  application:
+    name: sn-socket-notification-sender
+
+messaging:
+  config:
+    enabled: true
+
+pipeline:
+  social:
+    tweet-feed-notificator:
+      applicationId: tweet-feed-notificator
+      inputTopic: TWEED-FRIENDS-SUBMIT-NOTIFICATION_TOPIC
+      bootstrapServer: localhost:9092

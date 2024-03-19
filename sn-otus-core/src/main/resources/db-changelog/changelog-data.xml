@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-postgres-data-1.0" author="dzmitry.kapachou">
+        <sql>
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (11100011, 'username-1', '$2a$08$VAQnJFcbHvXrc1qlP8U2M.LVKatEp0Z67WPsc.yCSx2cDnDR4yeym', 'dzmitry', 'kapachou', NULL, NULL, 'MALE', 29);
+
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (11200031, 'username-2', '$2a$08$VAQnJFcbHvXrc1qlP8U2M.LVKatEp0Z67WPsc.yCSx2cDnDR4yeym', 'kseniya', 'kapachova', NULL, NULL, 'FEMALE', 23);
+
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (11331003, 'username-3', '$2a$08$VAQnJFcbHvXrc1qlP8U2M.LVKatEp0Z67WPsc.yCSx2cDnDR4yeym', 'viktor', 'kapachou', NULL, NULL, 'MALE', 32);
+
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (19190004, 'username-4', '$2a$08$VAQnJFcbHvXrc1qlP8U2M.LVKatEp0Z67WPsc.yCSx2cDnDR4yeym', 'elena', 'kapachova', NULL, NULL, 'FEMALE', 58);
+        </sql>
+
+        <sql>
+            insert into friends(owner_id, friend_id)
+            values (11100011, 11200031);
+
+            insert into friends(owner_id, friend_id)
+            values (11200031, 11100011);
+
+            insert into friends(owner_id, friend_id)
+            values (11100011, 11331003);
+
+            insert into friends(owner_id, friend_id)
+            values (11331003, 11100011);
+
+            insert into friends(owner_id, friend_id)
+            values (11331003, 19190004);
+
+            insert into friends(owner_id, friend_id)
+            values (19190004, 11331003);
+        </sql>
+
+        <sql>
+            insert into tweets(id, text, created_at, modified_at, person_id)
+            values(333087, 'post-#1-text', NOW(), NOW(), 11100011);
+
+            insert into tweets(id, text, created_at, modified_at, person_id)
+            values(333088, 'post-#2-text', NOW(), NOW(), 11100011);
+
+            insert into tweets(id, text, created_at, modified_at, person_id)
+            values(333089, 'post-#3-text', NOW(), NOW(), 11100011);
+        </sql>
+
+    </changeSet>
+
+<!--    <changeSet id="import-performance-copy-data" author="dzmitry.kapachou" runOnChange="true">-->
+<!--        <loadData tableName="person" file="people.csv" separator=",">-->
+<!--            <column name="lastname" header="lastname"/>-->
+<!--            <column name="firstname" header="firstname"/>-->
+<!--            <column name="age" type="NUMERIC" header="age"/>-->
+<!--            <column name="city" header="city"/>-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+
+</databaseChangeLog>
