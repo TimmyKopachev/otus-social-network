@@ -31,7 +31,7 @@ public class TweetTimelineFeedService {
     @PostConstruct
     private void preComputeTimelineOnStartForRecentSessions() {
         Executors.newSingleThreadExecutor().execute(() -> {
-            personService.getRecentPersonSessions()
+            personService.getActivePersonSessions()
                     .forEach(person -> {
                         Queue<Tweet> cachedTweets = EvictingQueue.create(1_000);
                         cachedTweets.addAll(tweetService.findTweetsIncludingFriendsTweets(person));
