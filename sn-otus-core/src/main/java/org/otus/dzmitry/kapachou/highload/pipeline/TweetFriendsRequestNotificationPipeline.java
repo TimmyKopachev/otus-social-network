@@ -2,7 +2,7 @@ package org.otus.dzmitry.kapachou.highload.pipeline;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.otus.dzmitry.kapachou.highload.cache.channel.TweetFriendsNotificationRequest;
+import org.otus.dzmitry.kapachou.highload.channel.TweetFriendsNotificationRequest;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

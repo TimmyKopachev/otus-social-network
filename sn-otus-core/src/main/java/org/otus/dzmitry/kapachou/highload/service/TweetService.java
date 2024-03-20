@@ -1,10 +1,10 @@
 package org.otus.dzmitry.kapachou.highload.service;
 
 import lombok.AllArgsConstructor;
-import org.otus.dzmitry.kapachou.highload.cache.jpa.AbstractCrudService;
-import org.otus.dzmitry.kapachou.highload.cache.jpa.BaseRepository;
-import org.otus.dzmitry.kapachou.highload.cache.model.Person;
-import org.otus.dzmitry.kapachou.highload.cache.model.Tweet;
+import org.otus.dzmitry.kapachou.highload.jpa.AbstractCrudService;
+import org.otus.dzmitry.kapachou.highload.jpa.BaseRepository;
+import org.otus.dzmitry.kapachou.highload.model.Person;
+import org.otus.dzmitry.kapachou.highload.model.Tweet;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,7 +1,7 @@
 package org.otus.dzmitry.kapachou.highload.web;
 
 import lombok.AllArgsConstructor;
-import org.otus.dzmitry.kapachou.highload.cache.model.Person;
+import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.otus.dzmitry.kapachou.highload.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

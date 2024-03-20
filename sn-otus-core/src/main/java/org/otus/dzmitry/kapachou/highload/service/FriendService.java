@@ -1,10 +1,10 @@
 package org.otus.dzmitry.kapachou.highload.service;
 
-import org.otus.dzmitry.kapachou.highload.cache.model.Friend;
-import org.otus.dzmitry.kapachou.highload.cache.model.Person;
+import org.otus.dzmitry.kapachou.highload.model.Friend;
+import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;

@@ -65,7 +65,6 @@ public class WebSecurityConfiguration {
         http
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/users/{\\d+}").permitAll();
                     registry.anyRequest().authenticated();
                 })
                 .logout((logout) -> logout

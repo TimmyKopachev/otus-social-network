@@ -1,7 +1,7 @@
 package org.otus.dzmitry.kapachou.highload.service;
 
-import org.otus.dzmitry.kapachou.highload.cache.jpa.BaseRepository;
-import org.otus.dzmitry.kapachou.highload.cache.model.Tweet;
+import org.otus.dzmitry.kapachou.highload.jpa.BaseRepository;
+import org.otus.dzmitry.kapachou.highload.model.Tweet;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

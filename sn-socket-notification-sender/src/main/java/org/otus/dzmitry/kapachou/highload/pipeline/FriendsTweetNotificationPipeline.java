@@ -6,9 +6,8 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
-import org.otus.dzmitry.kapachou.highload.cache.channel.TweetFriendsNotificationRequest;
-import org.otus.dzmitry.kapachou.highload.cache.pipeline.StreamPipeline;
-import org.otus.dzmitry.kapachou.highload.cache.serialization.CommonStreamConfig;
+import org.otus.dzmitry.kapachou.highload.channel.TweetFriendsNotificationRequest;
+import org.otus.dzmitry.kapachou.highload.serialization.CommonStreamConfig;
 import org.otus.dzmitry.kapachou.highload.pipeline.properties.FriendsTweetNotificationPipelineProperties;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 

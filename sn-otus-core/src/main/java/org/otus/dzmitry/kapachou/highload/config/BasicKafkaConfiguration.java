@@ -2,8 +2,8 @@ package org.otus.dzmitry.kapachou.highload.config;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.streams.StreamsConfig;
-import org.otus.dzmitry.kapachou.highload.cache.channel.TweetFriendsNotificationRequest;
-import org.otus.dzmitry.kapachou.highload.cache.serialization.JacksonSerializer;
+import org.otus.dzmitry.kapachou.highload.channel.TweetFriendsNotificationRequest;
+import org.otus.dzmitry.kapachou.highload.serialization.JacksonSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

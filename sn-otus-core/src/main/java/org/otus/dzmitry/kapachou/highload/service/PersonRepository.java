@@ -1,7 +1,7 @@
 package org.otus.dzmitry.kapachou.highload.service;
 
-import org.otus.dzmitry.kapachou.highload.cache.jpa.BaseRepository;
-import org.otus.dzmitry.kapachou.highload.cache.model.Person;
+import org.otus.dzmitry.kapachou.highload.jpa.BaseRepository;
+import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;

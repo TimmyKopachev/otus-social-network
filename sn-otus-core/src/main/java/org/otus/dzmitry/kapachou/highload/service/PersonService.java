@@ -2,10 +2,10 @@ package org.otus.dzmitry.kapachou.highload.service;
 
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
-import org.otus.dzmitry.kapachou.highload.cache.jpa.AbstractCrudService;
-import org.otus.dzmitry.kapachou.highload.cache.jpa.BaseRepository;
-import org.otus.dzmitry.kapachou.highload.cache.model.Person;
-import org.otus.dzmitry.kapachou.highload.cache.model.auth.AuthPerson;
+import org.otus.dzmitry.kapachou.highload.jpa.AbstractCrudService;
+import org.otus.dzmitry.kapachou.highload.jpa.BaseRepository;
+import org.otus.dzmitry.kapachou.highload.model.Person;
+import org.otus.dzmitry.kapachou.highload.model.auth.AuthPerson;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
