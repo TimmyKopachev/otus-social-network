@@ -4,7 +4,20 @@ class Timeline {
         this.store = data;
         this.timeline = document.querySelector('#timeline');
 
+        document.getElementById('timeline').addEventListener('click', () => this.writeTweet())
+
         this.updateTimeline();
+    }
+
+    writeTweet() {
+        http.createData({
+            'text':
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit,' +
+            'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+            ' Lectus mauris ultrices eros in cursus turpis massa. In fermentum et sollicitudin ac orci.' +
+            'Faucibus ornare suspendisse sed nisi lacus sed. Vivamus at augue eget arcu dictum varius.' +
+            'Lobortis scelerisque fermentum dui faucibus in ornare quam.'
+        });
     }
 
     updateTimeline () {
@@ -28,7 +41,8 @@ class ListItem {
     init () {
         this.listElm = document.createElement('li');
         this.listElm.setAttribute('class', 'event');
-        this.listElm.setAttribute('data-date', this.data.createdAt);
+        let formattedDate = Utils.formatDate(this.data.createdAt);
+        this.listElm.setAttribute('data-date', formattedDate);
 
         const author = document.createElement('h3');
         author.append(this.data.author)
@@ -40,5 +54,19 @@ class ListItem {
     }
 
     getHtmlElement = () => this.listElm;
+}
 
+class Utils {
+    static padTo2Digits (num) {
+        return num.toString().padStart(2, '0');
+    }
+
+    static formatDate (date) {
+        let d = new Date(date);
+        return [
+            d.getFullYear(),
+            this.padTo2Digits(d.getMonth() + 1),
+            this.padTo2Digits(d.getDate()),
+        ].join('-');
+    }
 }

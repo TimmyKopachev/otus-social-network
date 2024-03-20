@@ -1,15 +1,15 @@
 
 class WsStompSubscriber {
 
-    constructor (wsURL, channel) {
+    constructor (wsURL) {
         this.wsURL = wsURL;
-        this.channel = channel;
     }
 
-     subscribe(timeline) {
-        stompClient = Stomp.client(this.wsURL);
+     subscribe(timeline, channel) {
+        var stompClient = Stomp.client(this.wsURL);
         stompClient.connect({}, function(frame) {
-            stompClient.subscribe(this.channel, function(msg) {
+            stompClient.subscribe(channel, function(msg) {
+                var data = JSON.parse(msg.body);
                 timeline.store.push(data);
                 timeline.updateTimeline();
             });

@@ -19,9 +19,10 @@ public class WebSocketConfiguration extends AbstractSessionWebSocketMessageBroke
 
     @Override
     protected void configureStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws-otus-network");
         registry.addEndpoint("/ws-otus-network")
-                .setAllowedOrigins("*")
+                .setAllowedOriginPatterns("*");
+        registry.addEndpoint("/ws-otus-network")
+                .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 

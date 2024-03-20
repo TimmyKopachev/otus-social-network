@@ -8,7 +8,8 @@ class HTTP {
         return fetch(this.API, { method, body: JSON.stringify(body),
          headers: {
            'Accept': 'application/json',
-           'Content-Type': 'application/json'
+           'Content-Type': 'application/json',
+           'Authorization': 'Basic dXNlcm5hbWUtMzpwYXNzd29yZA=='
          } });
     }
 

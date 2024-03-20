@@ -3,12 +3,12 @@ const WS_NOTIFICATION_SERVICE_URL = 'ws://localhost:9082/ws-otus-network';
 const WS_CHANNEL = '/user/queue/tweet-feed-updates';
 
 const http = new HTTP(API_URL);
-const wsStomp = new WsStompSubscriber(WS_NOTIFICATION_SERVICE_URL, WS_CHANNEL);
+const wsStomp = new WsStompSubscriber(WS_NOTIFICATION_SERVICE_URL);
 
 http.fetchData().then(async (response) => {
     if(response.ok) {
         const data = await response.json();
         const timeline = new Timeline(data);
-        wsStomp.subscribe(timeline);
+        wsStomp.subscribe(timeline, WS_CHANNEL);
     }
 });

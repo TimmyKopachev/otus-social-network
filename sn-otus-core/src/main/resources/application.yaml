@@ -50,3 +50,9 @@ social:
   network:
     kafka:
       topics: TWEED-FRIENDS-SUBMIT-NOTIFICATION_TOPIC
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
