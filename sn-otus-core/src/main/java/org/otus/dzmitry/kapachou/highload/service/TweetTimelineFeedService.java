@@ -6,11 +6,11 @@ import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.otus.dzmitry.kapachou.highload.channel.TweetDetails;
 import org.otus.dzmitry.kapachou.highload.channel.TweetFriendsNotificationRequest;
+import org.otus.dzmitry.kapachou.highload.jpa.AuthenticationCachedPersonService;
 import org.otus.dzmitry.kapachou.highload.model.Friend;
 import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.otus.dzmitry.kapachou.highload.model.Tweet;
 import org.otus.dzmitry.kapachou.highload.pipeline.TweetFriendsRequestNotificationPipeline;
-import org.springframework.session.SessionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 public class TweetTimelineFeedService {
 
     private final IMap<Long, Collection<Tweet>> tweetsCache;
-    private final SessionRepository sessionRepository;
+    private final AuthenticationCachedPersonService authenticationService;
     private final TweetFriendsRequestNotificationPipeline tweetNotificationPipeline;
 
     private final PersonService personService;
@@ -47,7 +47,7 @@ public class TweetTimelineFeedService {
     }
 
     public Collection<Tweet> fetchTweetsFeed() {
-        var current = personService.getCurrentAuthenticatedUser();
+        var current = authenticationService.getAuthenticatedPerson();
         if (isPersonTimelineCached(current)) {
             return tweetsCache.get(current.getId());
         }

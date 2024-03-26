@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-postgres-data-1.0" author="dzmitry.kapachou">
+        <sql>
+            insert into persons_dialogues(person_id, dialogue_id)
+            values (11100011, -70011);
+            insert into persons_dialogues(person_id, dialogue_id)
+            values (19190004, -70011);
+
+            insert into persons_dialogues(person_id, dialogue_id)
+            values (11100011, -70012);
+            insert into persons_dialogues(person_id, dialogue_id)
+            values (11200031, -70012);
+            insert into persons_dialogues(person_id, dialogue_id)
+            values (11331003, -70012);
+
+            insert into dialogues(id, title, created_at, modified_at)
+            values (-70011, 'birthday party chat-08.10.2035', NOW(), NOW());
+            insert into dialogues(id, title, created_at, modified_at)
+            values (-70012, 'otus lectures internal discussion', NOW(), NOW());
+        </sql>
+
+        <sql>
+            insert into messages(id, text, status, created_at, modified_at, dialogue_id, author_id)
+            values (-18, 'have you seen last lecture?', 'VIEWED', NOW(), NOW(), -70012, 11100011);
+            insert into messages(id, text, status, created_at, modified_at, dialogue_id, author_id)
+            values (-19, 'which one?', 'VIEWED', NOW(), NOW(), -70012, 11200031);
+            insert into messages(id, text, status, created_at, modified_at, dialogue_id, author_id)
+            values (-20, 'I meant the microservice topic. Ive got some compiler issues for the second service where feign has been applied for.', 'VIEWED', NOW(), NOW(), -70012, 11100011);
+            insert into messages(id, text, status, created_at, modified_at, dialogue_id, author_id)
+            values (-21, 'I had the same impediment. I am going to request for an assistance!', 'VIEWED', NOW(), NOW(), -70012, 11331003);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

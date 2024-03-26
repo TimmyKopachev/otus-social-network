@@ -23,11 +23,11 @@ docker-container up -d
 ___
 * переходим в postgres container
 ```bash
-docker exec -it otus-social-network-db /bin/sh
+docker exec -it otus-social-network-dialogue-db /bin/sh
 ```
 * подключаемся к базе данных otus из docker-compose файла
 ```bash
-psql -d otus-social-network-db -U postgres -W
+psql -d otus-social-network-dialogue-db -U postgres -W
 ```
 * вводим пароль в подключении к базе данных
 ```bash

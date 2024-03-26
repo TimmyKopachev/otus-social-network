@@ -1,0 +1,22 @@
+server:
+  port: 9083
+
+spring:
+  application:
+    name: sn-otus-dialogue-chat
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+  #Liquibase
+  liquibase:
+    change-log: ${LIQUIBASE_CHANGE_LOG:classpath:db-changelog/changelog-dev.xml}
+
+  #JPA
+  datasource:
+    url: jdbc:postgresql://localhost:5433/otus-social-network-dialogue-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver

@@ -1,10 +1,14 @@
 server:
   port: 9081
 
-
 spring:
   profiles:
     active: local
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
 
   session:
     storetype: hazelcast
@@ -19,7 +23,7 @@ spring:
 
   #JPA
   datasource:
-    url: jdbc:postgresql://localhost:5432/otus-social-network-db
+    url: jdbc:postgresql://localhost:5432/otus-social-network-core-db
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -32,27 +36,14 @@ spring:
         format_sql: false
         ddl-auto: none
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: httptrace
-
 messaging:
   config:
     enabled: true
-
 kafka:
   bootstrap:
     server: localhost:9092
-
 social:
   network:
     kafka:
       topics: TWEED-FRIENDS-SUBMIT-NOTIFICATION_TOPIC
 
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG

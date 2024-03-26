@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.otus.dzmitry.kapachou.highload.model.auth.AuthPerson;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SocialNetworkApplicationRunner.class)
 public class SocialNetworkCoreIntegrationTest {
 
     @BeforeAll

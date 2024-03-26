@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="initial-person-table-1.0" author="dzmitry.kapachou">
+
+        <createTable tableName="persons_dialogues">
+            <column name="person_id" type="BIGINT"/>
+            <column name="dialogue_id" type="BIGINT"/>
+        </createTable>
+
+        <createTable tableName="dialogues">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(5000)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="modified_at" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName="messages">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="text" type="VARCHAR(5000)"/>
+            <column name="status" type="VARCHAR(50)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="modified_at" type="timestamp"/>
+            <column name="dialogue_id" type="BIGINT"/>
+            <column name="author_id" type="BIGINT"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="initial-postgres-data-1.0" author="dzmitry.kapachou">
-        <sql>
+<!--        <sql>
             insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
             values (11100011, 'username-1', '$2a$08$VAQnJFcbHvXrc1qlP8U2M.LVKatEp0Z67WPsc.yCSx2cDnDR4yeym', 'dzmitry', 'kapachou', NULL, NULL, 'MALE', 29);
 
@@ -16,6 +16,20 @@
 
             insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
             values (19190004, 'username-4', '$2a$08$VAQnJFcbHvXrc1qlP8U2M.LVKatEp0Z67WPsc.yCSx2cDnDR4yeym', 'elena', 'kapachova', NULL, NULL, 'FEMALE', 58);
+        </sql>-->
+
+        <sql>
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (11100011, 'username-1', 'password', 'dzmitry', 'kapachou', NULL, NULL, 'MALE', 29);
+
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (11200031, 'username-2', 'password', 'kseniya', 'kapachova', NULL, NULL, 'FEMALE', 23);
+
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (11331003, 'username-3', 'password', 'viktor', 'kapachou', NULL, NULL, 'MALE', 32);
+
+            insert into persons(id, username, password, firstname, lastname, interests, city, gender, age)
+            values (19190004, 'username-4', 'password', 'elena', 'kapachova', NULL, NULL, 'FEMALE', 58);
         </sql>
 
         <sql>

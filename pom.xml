@@ -20,7 +20,7 @@
         <module>sn-data-model</module>
         <module>sn-socket-notification-sender</module>
         <module>sn-kstream-kafka-starter</module>
-        <module>sn-blackbox-websocket-testing</module>
+        <module>sn-otus-dialogue-chat</module>
     </modules>
 
     <developers>
@@ -37,6 +37,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -51,6 +53,18 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     
 </project>

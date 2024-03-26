@@ -2,6 +2,7 @@ package org.otus.dzmitry.kapachou.highload.service;
 
 import lombok.AllArgsConstructor;
 import org.otus.dzmitry.kapachou.highload.jpa.AbstractCrudService;
+import org.otus.dzmitry.kapachou.highload.jpa.AuthenticationCachedPersonService;
 import org.otus.dzmitry.kapachou.highload.jpa.BaseRepository;
 import org.otus.dzmitry.kapachou.highload.model.Person;
 import org.otus.dzmitry.kapachou.highload.model.Tweet;
@@ -14,8 +15,9 @@ import java.util.Collection;
 @AllArgsConstructor
 public class TweetService extends AbstractCrudService<Tweet> {
 
-    final TweetRepository tweetRepository;
-    final PersonService personService;
+    private final AuthenticationCachedPersonService authenticationService;
+    private final TweetRepository tweetRepository;
+    private final PersonService personService;
 
     public Collection<Tweet> findTweetsIncludingFriendsTweets(Person person) {
         return tweetRepository.findTweetsWithFriendsTweetsByPersonId(person.getId());
@@ -24,14 +26,14 @@ public class TweetService extends AbstractCrudService<Tweet> {
     @Override
     @Transactional
     public Tweet save(Tweet tweet) {
-        tweet.setAuthor(personService.getCurrentAuthenticatedUser());
+        tweet.setAuthor(authenticationService.getAuthenticatedPerson());
         return super.save(tweet);
     }
 
     @Override
     @Transactional
     public Iterable<Tweet> saveAll(Collection<Tweet> data) {
-        var author = personService.getCurrentAuthenticatedUser();
+        var author = authenticationService.getAuthenticatedPerson();
         data.forEach(t -> t.setAuthor(author));
         return super.saveAll(data);
     }
