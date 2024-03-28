@@ -46,8 +46,8 @@ public class PersonSecurityService {
         person.encryptPassword(passwordEncoder);
         var saved = personService.save(person);
         log.info("Person has been successfully saved:<{}>", saved.getId());
-        var refreshToken = jwtPersonTokenService.createRefreshToken(saved);
-        return new PersonAuthorizationResponse(saved.getUsername(), refreshToken.getRefreshToken(), jwtTokenProcessor.generateToken(saved));
+        var token = jwtPersonTokenService.createRefreshToken(saved);
+        return new PersonAuthorizationResponse(saved.getUsername(), token.getAccessToken(), token.getRefreshToken());
     }
 
     @Transactional

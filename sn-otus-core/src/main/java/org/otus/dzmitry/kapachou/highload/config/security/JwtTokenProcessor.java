@@ -102,6 +102,6 @@ public class JwtTokenProcessor {
     private boolean isTokenExpired(String token) {
         Date date = getExpirationDateFromToken(token);
         Date now = Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC));
-        return date == null || !date.before(now);
+        return date == null || date.before(now);
     }
 }

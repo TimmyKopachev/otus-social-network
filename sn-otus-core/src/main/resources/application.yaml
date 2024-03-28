@@ -39,7 +39,7 @@ spring:
 
 messaging:
   config:
-    enabled: true
+    enabled: false
 kafka:
   bootstrap:
     server: localhost:9092
@@ -47,6 +47,7 @@ social:
   network:
     kafka:
       topics: TWEED-FRIENDS-SUBMIT-NOTIFICATION_TOPIC
+
 
 jwt:
   secret: reallysecretgoldkey123456789011111111qwASSDfffffffffwe21azzFNMzzzzz34fDx5xcCq13fffg29903qllllkjilIlkdf
