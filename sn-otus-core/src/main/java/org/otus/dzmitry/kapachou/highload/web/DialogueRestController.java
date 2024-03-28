@@ -3,8 +3,8 @@ package org.otus.dzmitry.kapachou.highload.web;
 
 import org.otus.dzmitry.kapachou.highload.model.Dialogue;
 import org.otus.dzmitry.kapachou.highload.model.Message;
-import org.otus.dzmitry.kapachou.highload.request.CreateDialogueRequest;
-import org.otus.dzmitry.kapachou.highload.request.CreateMessageRequest;
+import org.otus.dzmitry.kapachou.highload.payload.request.CreateDialogueRequest;
+import org.otus.dzmitry.kapachou.highload.payload.request.CreateMessageRequest;
 import org.otus.dzmitry.kapachou.highload.web.external.DialogueExternalRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

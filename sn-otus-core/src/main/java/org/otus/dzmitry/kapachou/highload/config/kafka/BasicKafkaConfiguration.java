@@ -1,4 +1,4 @@
-package org.otus.dzmitry.kapachou.highload.config;
+package org.otus.dzmitry.kapachou.highload.config.kafka;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.streams.StreamsConfig;

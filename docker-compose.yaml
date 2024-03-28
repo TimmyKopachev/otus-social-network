@@ -10,8 +10,6 @@ services:
       POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
-    networks:
-      - sn-otus-localhost
 
   otus-social-network-dialogue-postgres:
     image: "postgres:15.4"
@@ -25,8 +23,6 @@ services:
     ports:
       - "5433:5433"
     command: -p 5433
-    networks:
-      - sn-otus-localhost
 
 
   otus-sn-consul-discovery:
@@ -36,11 +32,3 @@ services:
     restart: always
     ports:
       - "8500:8500"
-    networks:
-      - sn-otus-localhost
-
-
-networks:
-  sn-otus-localhost:
-    name: sn-otus-localhost
-    driver: bridge

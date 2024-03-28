@@ -1,4 +1,4 @@
-package org.otus.dzmitry.kapachou.highload.request;
+package org.otus.dzmitry.kapachou.highload.payload.request;
 
 import lombok.Data;
 

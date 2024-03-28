@@ -1,9 +1,12 @@
 package org.otus.dzmitry.kapachou.highload.web.external;
 
+import feign.Headers;
+import org.otus.dzmitry.kapachou.highload.config.feign.SnFeignClientConfiguration;
 import org.otus.dzmitry.kapachou.highload.model.Dialogue;
 import org.otus.dzmitry.kapachou.highload.model.Message;
-import org.otus.dzmitry.kapachou.highload.request.CreateDialogueRequest;
-import org.otus.dzmitry.kapachou.highload.request.CreateMessageRequest;
+import org.otus.dzmitry.kapachou.highload.payload.request.CreateDialogueRequest;
+import org.otus.dzmitry.kapachou.highload.payload.request.CreateMessageRequest;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Collection;
 
-//@FeignClient(name = "sn-otus-dialogue-chat", path = "/dialogues")
+@FeignClient(name = "sn-otus-dialogue-chat", path = "/dialogues", configuration = SnFeignClientConfiguration.class)
+@Headers("Content-Type: application/json")
 public interface DialogueExternalRestApi {
 
     @RequestMapping(method = RequestMethod.POST)
     Dialogue createDialogue(@RequestBody CreateDialogueRequest request);
-
 
     @RequestMapping(method = RequestMethod.GET)
     Collection<Dialogue> getDialogues();
